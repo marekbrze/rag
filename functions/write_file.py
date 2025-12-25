@@ -28,20 +28,20 @@ def write_file(working_directory, file_path, content):
     try:
         if common_path != working_dir_abs:
             error = f'Error: Cannot write to "{file_path}" as it is outside the permitted working directory'
-            print(error)
+            # print(error)
             return error
         full_path = os.path.normpath(os.path.join(working_directory, file_path))
         if os.path.isdir(full_path) is True:
             error = f'Error: Cannot write to "{file_path}" as it is a directory'
-            print(error)
+            # print(error)
             return error
         os.makedirs(os.path.dirname(full_path), exist_ok=True)
         with open(full_path, "w") as f:
             f.write(content)
             info = f'Successfully wrote to "{file_path}" ({len(content)} characters written)'
-            print(info)
+            # print(info)
             return info
     except Exception as e:
         error = f"  Error: {e}"
-        print(error)
+        # print(error)
         return error

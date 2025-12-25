@@ -26,12 +26,12 @@ def get_file_content(working_directory, file_path):
     try:
         if common_path != working_dir_abs:
             error = f'Error: Cannot read "{file_path}" as it is outside the permitted working directory'
-            print(error)
+            # print(error)
             return error
         full_path = os.path.join(working_directory, file_path)
         if os.path.isfile(full_path) is False:
             error = f'Error: File not found or is not a regular file: "{file_path}"'
-            print(error)
+            # print(error)
             return error
         with open(full_path, "r") as f:
             file_content_string = f.read(MAX_CHARS)
@@ -39,9 +39,9 @@ def get_file_content(working_directory, file_path):
                 file_content_string += (
                     f'[...File "{file_path}" truncated at {MAX_CHARS} characters]'
                 )
-            print(file_content_string)
+            # print(file_content_string)
             return file_content_string
     except Exception as e:
         error = f"  Error: {e}"
-        print(error)
+        # print(error)
         return error

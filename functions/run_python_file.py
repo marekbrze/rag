@@ -30,16 +30,16 @@ def run_python_file(working_directory, file_path, args=None):
     try:
         if common_path != working_dir_abs:
             error = f'Error: Cannot execute "{file_path}" as it is outside the permitted working directory'
-            print(error)
+            # print(error)
             return error
         full_path = os.path.normpath(os.path.join(working_directory, file_path))
         if os.path.isfile(full_path) is False:
             error = f'Error: "{file_path}" does not exist or is not a regular file'
-            print(error)
+            # print(error)
             return error
         if full_path.endswith(".py") is False:
             error = f'Error: "{file_path}" is not a Python file'
-            print(error)
+            # print(error)
             return error
         command = ["python", target_path]
         if args is not None:
@@ -59,9 +59,9 @@ def run_python_file(working_directory, file_path, args=None):
             output_string = "No output produced\n"
         output_string += f"STDOUT: {result.stdout}\n"
         output_string += f"STDERR: {result.stderr}\n"
-        print(output_string)
+        # print(output_string)
         return output_string
     except Exception as e:
         error = f"Error: executing Python file: {e}"
-        print(error)
+        # print(error)
         return error
